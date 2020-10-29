@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gmail.wizaripost.snitch.view.MainView">
+    <children>
+
+      <Button layoutX="616.0" layoutY="348.0" mnemonicParsing="false" onAction="#send" text="Button" />
+      <VBox fx:id="checkBoxContainer" layoutY="53.0" prefHeight="346.0" prefWidth="356.0" spacing="20.0">
+         <padding>
+            <Insets left="20.0" top="20.0" />
+         </padding>
+      </VBox>
+<!--      <TextField fx:id="groupId" layoutX="29.0" layoutY="28.0" prefHeight="25.0" prefWidth="105.0" promptText="Отдел" />-->
+<!--      <Button fx:id="groupIdButton" onAction="#groupIdButton" layoutX="134.0" layoutY="28.0" mnemonicParsing="false" text="Button" />-->
+    </children>
+</AnchorPane>
