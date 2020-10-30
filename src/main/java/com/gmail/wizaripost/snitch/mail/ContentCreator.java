@@ -10,16 +10,24 @@ import java.util.List;
 public class ContentCreator implements IContentCreator {
     StringBuilder sb = new StringBuilder();
     int enumerator = 0;
+    String emailBody;
+    String emailBottom;
+
+    public ContentCreator(String emailBody, String emailBottom) {
+        this.emailBody = emailBody;
+        this.emailBottom = emailBottom;
+    }
 
     @Override
     public String createContent(List<Employee> employeeList) {
-//        StringBuilder sb = new StringBuilder();
         sb
-//                .append("<font color=\"black\">")
-                .append("<font color=\"gray\">")
-                .append("<p>")
-                .append("Доброе утро, Лариса!")
-                .append("</p>")
+                .append(emailBody)
+
+//                .append("<font color=\"gray\">")
+//                .append("<p>")
+//                .append("Доброе утро, Лариса!")
+//                .append("</p>")
+
                 .append("<p>")
                 .append(getDate() + "")
                 .append("</p>")
@@ -29,30 +37,33 @@ public class ContentCreator implements IContentCreator {
                 .append("<ul>")
                 .append("\n")
         ;
+
         for (Employee employee : employeeList) {
             getEmployee(employee);
         }
-        getFinale();
+        sb
+                .append("</ul>")
+                .append(emailBottom);
+//        getFinale();
         return sb.toString();
     }
 
-    private void getFinale() {
-        String finalMessage = new String();
-        if (enumerator == 1) {
-            finalMessage = "К работе удаленно приступил.\n";
-        } else {
-            finalMessage = "К работе удаленно приступили.\n";
-        }
-        sb
-                .append("</ul>")
-                .append("<font color=\"gray\">")
-                .append("<p>")
-                .append(finalMessage)
-                .append("</p>")
-                .append("</font>")
-                .append("</font>");
-        enumerator = 0;
-    }
+//    private void getFinale() {
+//        String finalMessage = new String();
+//        if (enumerator == 1) {
+//            finalMessage = "К работе удаленно приступил.\n";
+//        } else {
+//            finalMessage = "К работе удаленно приступили.\n";
+//        }
+//        sb
+//                .append("<font color=\"gray\">")
+//                .append("<p>")
+//                .append(finalMessage)
+//                .append("</p>")
+//                .append("</font>")
+//                .append("</font>");
+//        enumerator = 0;
+//    }
 
     private void getEmployee(Employee employee) {
         if (employee.getStatus()) {

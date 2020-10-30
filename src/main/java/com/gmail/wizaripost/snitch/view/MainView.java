@@ -46,12 +46,6 @@ public class MainView implements Initializable {
 //        updateEmployees();
 //    }
 
-//
-//          properties.put("mail.smtp.host", host);
-//        properties.put("mail.smtp.port", port);
-//        properties.put("mail.smtp.auth", auth);
-//        properties.put("mail.smtp.starttls.enable", starttlsEnable);
-
     public MainView() {
         this.settingsProvider = new SettingsProviderFromXml(new File("settings.xml"));
         IAuthenticatorProvider authenticatorProvider = new AuthenticatorProviderFromMemory(
@@ -65,7 +59,10 @@ public class MainView implements Initializable {
         );
         ISenderProvider senderProvider = new SenderProviderFromMemory(settingsProvider.getSettings("myMail"));
         this.mailApi = new MailApi(senderProvider, propertiesProvider, authenticatorProvider);
-        this.contentCreator = new ContentCreator();
+        this.contentCreator = new ContentCreator(
+                settingsProvider.getSettings("emailBody"),
+                settingsProvider.getSettings("emailBottom")
+        );
         this.employeeProvider = new EmployeeProviderFromXml(new File("employees.xml"));
     }
 
@@ -92,8 +89,10 @@ public class MainView implements Initializable {
     public void send(ActionEvent actionEvent) {
         String content = this.contentCreator.createContent(employees);
         try {
-//            this.mailApi.sendMail("targetMail@gmail.com", "Отчет о присутствии", content);
-            this.mailApi.sendMail(settingsProvider.getSettings("targetMail"), "Отчет о присутствии", content);
+            this.mailApi.sendMail(
+                    settingsProvider.getSettings("targetMail"),
+                    settingsProvider.getSettings("emailHeader"),
+                    content);
         } catch (MessagingException e) {
             e.printStackTrace();
 

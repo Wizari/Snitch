@@ -28,6 +28,22 @@
         <key>mail.smtp.starttls.enable</key>
         <values>true</values>
     </descriptor>
+<descriptor>
+        <key>emailHeader</key>
+        <values>Отчет о присутствии</values>
+    </descriptor>
+    <descriptor>
+        <key>emailBody</key>
+        <values> <![CDATA[
+        <font color="gray"> <p> Доброе утро, Лариса! </p>
+        ]]></values>
+    </descriptor>
+    <descriptor>
+        <key>emailBottom</key>
+        <values><![CDATA[
+        <font color="gray"><p> К работе удаленно приступили.</p></font></font>
+        ]]></values>
+    </descriptor>
     <!--    <descriptor>-->
     <!--        <key></key>-->
     <!--        <values></values>-->
