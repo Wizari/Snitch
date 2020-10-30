@@ -19,7 +19,7 @@ public class Mail {
 //
 //
 //        try {
-//            mailApi.sendMail("wizaripost@gmail.com", "Hello wold", content);
+//            mailApi.sendMail("xxxx@gmail.com", "Hello wold", content);
 //        } catch (MessagingException e) {
 //            System.out.println("Произошла ошибка " + e.getMessage());
 //        }
@@ -39,13 +39,13 @@ public class Mail {
      try {
      Authenticator auth = new Authenticator() {
      public PasswordAuthentication getPasswordAuthentication() {
-     return new PasswordAuthentication("give4me2pain@gmail.com", "w746001123");
+     return new PasswordAuthentication("xxx@gmail.com", "xxx");
      }
      };
      Session session = Session.getInstance(properties, auth);
      Message message = new MimeMessage(session);
-     message.setFrom(new InternetAddress("give4me2pain@gmail.com"));
-     message.setRecipient(Message.RecipientType.TO, new InternetAddress("wizaripost@gmail.com"));
+     message.setFrom(new InternetAddress("xxxx@gmail.com"));
+     message.setRecipient(Message.RecipientType.TO, new InternetAddress("xxxx@gmail.com"));
      message.setSentDate(new Date());
      message.setSubject("Test Mail");
      Date dateNow = new Date();

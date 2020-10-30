@@ -1,7 +1,7 @@
 package com.gmail.wizaripost.snitch.mail;
 
-import com.gmail.wizaripost.snitch.logic.Employee;
-import com.gmail.wizaripost.snitch.repository.DataStorage;
+import com.gmail.wizaripost.snitch.entity.Employee;
+import com.gmail.wizaripost.snitch.repository.EmployeeDataStorage;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -22,9 +22,9 @@ public class EmployeeProviderFromXml implements IEmployeeProvider {
     @Override
     public List<Employee> getEmployees() {
         try {
-            JAXBContext context = JAXBContext.newInstance(DataStorage.class);
+            JAXBContext context = JAXBContext.newInstance(EmployeeDataStorage.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            DataStorage result = (DataStorage) unmarshaller.unmarshal(file);
+            EmployeeDataStorage result = (EmployeeDataStorage) unmarshaller.unmarshal(file);
             return result.getEmployeeDescriptors();
         } catch (JAXBException e) {
             throw new RuntimeException(e);
@@ -34,9 +34,9 @@ public class EmployeeProviderFromXml implements IEmployeeProvider {
     @Override
     public List<Employee> getEmployees(String groupId) {
         try {
-            JAXBContext context = JAXBContext.newInstance(DataStorage.class);
+            JAXBContext context = JAXBContext.newInstance(EmployeeDataStorage.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            DataStorage result = (DataStorage) unmarshaller.unmarshal(file);
+            EmployeeDataStorage result = (EmployeeDataStorage) unmarshaller.unmarshal(file);
             List<Employee> temp = result.getEmployeeDescriptors();
             List<Employee> res = new ArrayList<>();
             for (int i = 0; i < temp.size(); i++) {

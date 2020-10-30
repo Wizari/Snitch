@@ -1,6 +1,6 @@
 package com.gmail.wizaripost.snitch.repository;
 
-import com.gmail.wizaripost.snitch.logic.Employee;
+import com.gmail.wizaripost.snitch.entity.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,7 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 @AllArgsConstructor
 @NoArgsConstructor
-public class DataStorage {
+public class EmployeeDataStorage {
 
     @XmlElement(name = "descriptor")
     private List<Employee> employeeDescriptors;

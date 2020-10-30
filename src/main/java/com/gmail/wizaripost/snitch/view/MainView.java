@@ -1,6 +1,6 @@
 package com.gmail.wizaripost.snitch.view;
 
-import com.gmail.wizaripost.snitch.logic.Employee;
+import com.gmail.wizaripost.snitch.entity.Employee;
 import com.gmail.wizaripost.snitch.mail.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import lombok.Getter;
 
 import javax.mail.MessagingException;
 import java.io.File;
@@ -26,23 +27,43 @@ public class MainView implements Initializable {
     private IMailApi mailApi;
     private IContentCreator contentCreator;
     private IEmployeeProvider employeeProvider;
+    @Getter
+    public ISettingsProvider settingsProvider;
     private List<Employee> employees;
+
+//    public ISettingsProvider getSettingsProvider() {
+//        return settingsProvider;
+//    }
 
     @FXML
     private TextField groupId;
 
     private String textGroupId = "0";
 
-    @FXML
-    void groupIdButton(ActionEvent groupIdButton) {
-        this.employees = this.employeeProvider.getEmployees(this.groupId.getText());
-        updateEmployees();
-    }
+//    @FXML
+//    void groupIdButton(ActionEvent groupIdButton) {
+//        this.employees = this.employeeProvider.getEmployees(this.groupId.getText());
+//        updateEmployees();
+//    }
+
+//
+//          properties.put("mail.smtp.host", host);
+//        properties.put("mail.smtp.port", port);
+//        properties.put("mail.smtp.auth", auth);
+//        properties.put("mail.smtp.starttls.enable", starttlsEnable);
 
     public MainView() {
-        IAuthenticatorProvider authenticatorProvider = new AuthenticatorProviderFromMemory();
-        IPropertiesProvider propertiesProvider = new PropertiesProviderFromMemory();
-        ISenderProvider senderProvider = new SenderProviderFromMemory();
+        this.settingsProvider = new SettingsProviderFromXml(new File("settings.xml"));
+        IAuthenticatorProvider authenticatorProvider = new AuthenticatorProviderFromMemory(
+                settingsProvider.getSettings("myMail"),
+                settingsProvider.getSettings("passwordMyMail"));
+        IPropertiesProvider propertiesProvider = new PropertiesProviderFromMemory(
+                settingsProvider.getSettings("mail.smtp.host"),
+                settingsProvider.getSettings("mail.smtp.port"),
+                settingsProvider.getSettings("mail.smtp.auth"),
+                settingsProvider.getSettings("mail.smtp.starttls.enable")
+        );
+        ISenderProvider senderProvider = new SenderProviderFromMemory(settingsProvider.getSettings("myMail"));
         this.mailApi = new MailApi(senderProvider, propertiesProvider, authenticatorProvider);
         this.contentCreator = new ContentCreator();
         this.employeeProvider = new EmployeeProviderFromXml(new File("employees.xml"));
@@ -71,8 +92,8 @@ public class MainView implements Initializable {
     public void send(ActionEvent actionEvent) {
         String content = this.contentCreator.createContent(employees);
         try {
-            // TODO ввести почту получателя ("" - > "XXXX@gmail.com")
-            this.mailApi.sendMail("", "Отчет о присутствии", content);
+//            this.mailApi.sendMail("targetMail@gmail.com", "Отчет о присутствии", content);
+            this.mailApi.sendMail(settingsProvider.getSettings("targetMail"), "Отчет о присутствии", content);
         } catch (MessagingException e) {
             e.printStackTrace();
 

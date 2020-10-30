@@ -1,4 +1,4 @@
-package com.gmail.wizaripost.snitch.logic;
+package com.gmail.wizaripost.snitch.entity;
 
 public class Employee {
     private boolean status;

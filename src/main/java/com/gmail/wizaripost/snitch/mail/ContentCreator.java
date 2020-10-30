@@ -1,12 +1,11 @@
 package com.gmail.wizaripost.snitch.mail;
 
-import com.gmail.wizaripost.snitch.logic.Employee;
+import com.gmail.wizaripost.snitch.entity.Employee;
 
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class ContentCreator implements IContentCreator {
     StringBuilder sb = new StringBuilder();

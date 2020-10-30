@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+    <descriptor>
+        <key>myMail</key>
+        <values></values>
+    </descriptor>
+    <descriptor>
+        <key>passwordMyMail</key>
+        <values></values>
+    </descriptor>
+    <descriptor>
+        <key>targetMail</key>
+        <values></values>
+    </descriptor>
+    <descriptor>
+        <key>mail.smtp.host</key>
+        <values>smtp.gmail.com</values>
+    </descriptor>
+    <descriptor>
+        <key>mail.smtp.port</key>
+        <values>587</values>
+    </descriptor>
+    <descriptor>
+        <key>mail.smtp.auth</key>
+        <values>true</values>
+    </descriptor>
+    <descriptor>
+        <key>mail.smtp.starttls.enable</key>
+        <values>true</values>
+    </descriptor>
+    <!--    <descriptor>-->
+    <!--        <key></key>-->
+    <!--        <values></values>-->
+    <!--    </descriptor>-->
+</settings>
+
