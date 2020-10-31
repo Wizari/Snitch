@@ -1,5 +1,8 @@
 package com.gmail.wizaripost.snitch.entity;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+//@XmlRootElement(name = "settings")
 public class Settings {
     private String key;
     private String values;

@@ -8,7 +8,6 @@ public class SenderProviderFromMemory implements ISenderProvider {
         this.myMail = myMail;
     }
 
-    // TODO: 30.10.2020  заменить почту
     @Override
     public String getSender() {
         return myMail;

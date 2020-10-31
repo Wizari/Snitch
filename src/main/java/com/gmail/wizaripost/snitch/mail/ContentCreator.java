@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 public class ContentCreator implements IContentCreator {
-    StringBuilder sb = new StringBuilder();
-    int enumerator = 0;
-    String emailBody;
-    String emailBottom;
+    private StringBuilder sb = new StringBuilder();
+    private int enumerator = 0;
+    private String emailBody;
+    private String emailBottom;
 
     public ContentCreator(String emailBody, String emailBottom) {
         this.emailBody = emailBody;
@@ -20,14 +20,9 @@ public class ContentCreator implements IContentCreator {
 
     @Override
     public String createContent(List<Employee> employeeList) {
+        sb.setLength(0);
         sb
                 .append(emailBody)
-
-//                .append("<font color=\"gray\">")
-//                .append("<p>")
-//                .append("Доброе утро, Лариса!")
-//                .append("</p>")
-
                 .append("<p>")
                 .append(getDate() + "")
                 .append("</p>")
@@ -35,8 +30,7 @@ public class ContentCreator implements IContentCreator {
                 .append("</font>")
                 .append("<font color=\"black\">")
                 .append("<ul>")
-                .append("\n")
-        ;
+                .append("\n");
 
         for (Employee employee : employeeList) {
             getEmployee(employee);

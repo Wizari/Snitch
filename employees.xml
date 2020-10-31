@@ -10,41 +10,85 @@
         <status>true</status>
         <name>Буркацкий Глеб</name>
     </descriptor>
-<!--    <descriptor>-->
-<!--        <groupId>104</groupId>-->
-<!--        <status>true</status>-->
-<!--        <name>Федоренко</name>-->
-<!--    </descriptor>-->
-<!--    <descriptor>-->
-<!--        <groupId>104</groupId>-->
-<!--        <status>true</status>-->
-<!--        <name>Рысин</name>-->
-<!--    </descriptor>-->
-<!--    <descriptor>-->
-<!--        <groupId>104</groupId>-->
-<!--        <status>true</status>-->
-<!--        <name>Иванов</name>-->
-<!--    </descriptor>-->
+    <descriptor>
+        <groupId>104</groupId>
+        <status>true</status>
+        <name>Федоренко</name>
+    </descriptor>
+    <descriptor>
+        <groupId>104</groupId>
+        <status>true</status>
+        <name>Рысин</name>
+    </descriptor>
+    <descriptor>
+        <groupId>104</groupId>
+        <status>true</status>
+        <name>Иванов</name>
+    </descriptor>
 
-<!--    <descriptor>-->
-<!--        <groupId>105</groupId>-->
-<!--        <status>true</status>-->
-<!--        <name>Рысин test 105</name>-->
-<!--    </descriptor>-->
-<!--    <descriptor>-->
-<!--        <groupId>105</groupId>-->
-<!--        <status>true</status>-->
-<!--        <name>Иванов test 105</name>-->
-<!--    </descriptor>-->
+    <descriptor>
+        <groupId>105</groupId>
+        <status>true</status>
+        <name>Рысин test 105</name>
+    </descriptor>
+    <descriptor>
+        <groupId>105</groupId>
+        <status>true</status>
+        <name>Иванов test 105</name>
+    </descriptor>
 
-<!--    <descriptor>-->
-<!--        <groupId>103</groupId>-->
-<!--        <status>true</status>-->
-<!--        <name>Рысин test 103</name>-->
-<!--    </descriptor>-->
-<!--    <descriptor>-->
-<!--        <groupId>103</groupId>-->
-<!--        <status>true</status>-->
-<!--        <name>Иванов test 103</name>-->
-<!--    </descriptor>-->
+    <descriptor>
+        <groupId>103</groupId>
+        <status>true</status>
+        <name>Рысин test 103</name>
+    </descriptor>
+    <descriptor>
+        <groupId>103</groupId>
+        <status>true</status>
+        <name>Иванов test 103</name>
+    </descriptor>
+
+
+
+
+    <descriptor>
+        <groupId>103</groupId>
+        <status>true</status>
+        <name>Иванов test 103</name>
+    </descriptor>
+    <descriptor>
+        <groupId>103</groupId>
+        <status>true</status>
+        <name>Иванов test 103</name>
+    </descriptor>
+    <descriptor>
+        <groupId>103</groupId>
+        <status>true</status>
+        <name>Иванов test 103</name>
+    </descriptor>
+    <descriptor>
+        <groupId>103</groupId>
+        <status>true</status>
+        <name>Иванов test 103</name>
+    </descriptor>
+    <descriptor>
+        <groupId>103</groupId>
+        <status>true</status>
+        <name>Иванов test 103</name>
+    </descriptor>
+    <descriptor>
+        <groupId>103</groupId>
+        <status>true</status>
+        <name>Иванов test 103</name>
+    </descriptor>
+    <descriptor>
+        <groupId>103</groupId>
+        <status>true</status>
+        <name>Иванов test 103</name>
+    </descriptor>
+    <descriptor>
+        <groupId>103</groupId>
+        <status>true</status>
+        <name>Иванов test 103</name>
+    </descriptor>
 </workers>
