@@ -10,6 +10,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import lombok.Getter;
 
@@ -32,6 +33,11 @@ public class MainView implements Initializable {
     public TextField myMail;
     public TextField targetMail;
     public PasswordField passwordMyMail;
+    public AnchorPane settingsPanel;
+    public TextField mailSmtpStarttlsEnable;
+    public TextField mailSmtpHost;
+    public TextField mailSmtpPort;
+    public TextField mailSmtpAuth;
 
     private IMailApi mailApi;
     private IContentCreator contentCreator;
@@ -72,6 +78,11 @@ public class MainView implements Initializable {
         this.myMail.setText(settingsProvider.getSettings("myMail"));
         this.passwordMyMail.setText(settingsProvider.getSettings("passwordMyMail"));
         this.targetMail.setText(settingsProvider.getSettings("targetMail"));
+
+        this.mailSmtpHost.setText(settingsProvider.getSettings("mail.smtp.host"));
+        this.mailSmtpPort.setText(settingsProvider.getSettings("mail.smtp.port"));
+        this.mailSmtpAuth.setText(settingsProvider.getSettings("mail.smtp.auth"));
+        this.mailSmtpStarttlsEnable.setText(settingsProvider.getSettings("mail.smtp.starttls.enable"));
     }
 
     private void updateSettingsList() {
@@ -82,12 +93,11 @@ public class MainView implements Initializable {
         settingsList.add(new Settings("emailHeader", emailHeader.getText()));
         settingsList.add(new Settings("emailBody", emailBody.getText()));
         settingsList.add(new Settings("emailBottom", emailBottom.getText()));
-
-        settingsList.add(new Settings("mail.smtp.host", settingsProvider.getSettings("mail.smtp.host")));
-        settingsList.add(new Settings("mail.smtp.port", settingsProvider.getSettings("mail.smtp.port")));
-        settingsList.add(new Settings("mail.smtp.auth", settingsProvider.getSettings("mail.smtp.auth")));
+        settingsList.add(new Settings("mail.smtp.host", mailSmtpHost.getText()));
+        settingsList.add(new Settings("mail.smtp.port", mailSmtpPort.getText()));
+        settingsList.add(new Settings("mail.smtp.auth", mailSmtpAuth.getText()));
         settingsList.add(new Settings("mail.smtp.starttls.enable",
-                settingsProvider.getSettings("mail.smtp.starttls.enable")));
+                mailSmtpStarttlsEnable.getText()));
 
     }
 
@@ -105,6 +115,7 @@ public class MainView implements Initializable {
     }
 
     public void send(ActionEvent actionEvent) {
+        System.out.println("____Send");
         updateSettingsList();
         settingsProvider.saveSettingsToFile(new File("settings.xml"), settingsList);
         installSettings();
@@ -121,6 +132,8 @@ public class MainView implements Initializable {
     }
 
     public void save(ActionEvent actionEvent) {
+        System.out.println("____Save");
+
         updateSettingsList();
         settingsProvider.saveSettingsToFile(new File("settings.xml"), settingsList);
     }
@@ -144,4 +157,16 @@ public class MainView implements Initializable {
         );
     }
 
+    public void settings(ActionEvent actionEvent) {
+        if (settingsPanel.isVisible()) {
+            settingsPanel.setVisible(false);
+        } else {
+            settingsPanel.setVisible(true);
+        }
+    }
+
+    public void closeSettings(ActionEvent actionEvent) {
+        settingsPanel.setVisible(false);
+
+    }
 }
