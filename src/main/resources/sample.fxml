@@ -19,12 +19,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gmail.wizaripost.snitch.view.MainView">
     <children>
-      <TextArea fx:id="emailBody" layoutX="23.0" layoutY="63.0" prefHeight="161.0" prefWidth="657.0" promptText="Верхняя часть письма" />
-      <TextField fx:id="emailHeader" layoutX="23.0" layoutY="33.0" prefHeight="26.0" prefWidth="657.0" promptText="Тема" />
-      <TextArea fx:id="emailBottom" layoutX="23.0" layoutY="648.0" prefHeight="102.0" prefWidth="657.0" promptText="Нижняя часть письма" />
-      <ScrollPane layoutX="23.0" layoutY="229.0" prefHeight="412.0" prefWidth="657.0">
+      <ScrollPane layoutY="29.0" prefHeight="603.0" prefWidth="700.0">
          <content>
-            <VBox fx:id="checkBoxContainer" prefHeight="409.0" prefWidth="635.0" spacing="20.0">
+            <VBox fx:id="checkBoxContainer" prefHeight="598.0" prefWidth="677.0" spacing="20.0">
                <padding>
                   <Insets left="20.0" top="20.0" />
                </padding>
@@ -46,13 +43,13 @@
          </font>
       </Button>
       <Button fx:id="saveTopButton" layoutX="630.0" layoutY="1.0" mnemonicParsing="false" onAction="#save" text="Save" />
-      <AnchorPane fx:id="settingsPanel" layoutY="29.0" prefHeight="771.0" prefWidth="700.0">
+      <AnchorPane fx:id="settingsPanel" layoutY="29.0" prefHeight="771.0" prefWidth="700.0" visible="false">
          <children>
             <ScrollPane prefHeight="771.0" prefWidth="700.0" style="-fx-background-color: transparent;">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="758.0" prefWidth="684.0">
                      <children>
-                        <GridPane layoutX="14.0" layoutY="14.0" prefHeight="260.0" prefWidth="495.0">
+                        <GridPane layoutX="13.0" layoutY="88.0" prefHeight="260.0" prefWidth="495.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="163.0" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="246.0" />
@@ -92,16 +89,20 @@
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="13" />
                            </children>
                         </GridPane>
-                        <Button layoutX="212.0" layoutY="275.0" mnemonicParsing="false" onAction="#save" prefHeight="46.0" prefWidth="94.0" text="Save">
+                        <Button layoutX="213.0" layoutY="15.0" mnemonicParsing="false" onAction="#save" prefHeight="46.0" prefWidth="94.0" text="Save">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Button layoutX="326.0" layoutY="275.0" mnemonicParsing="false" onAction="#closeSettings" prefHeight="46.0" prefWidth="183.0" text="Close Settings">
+                        <Button layoutX="326.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeSettings" prefHeight="46.0" prefWidth="183.0" text="Close Settings">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Button>
+                        <TextArea fx:id="emailBody" layoutX="14.0" layoutY="379.0" prefHeight="102.0" prefWidth="657.0" promptText="Верхняя часть письма" />
+                        <TextField fx:id="emailHeader" layoutX="14.0" layoutY="348.0" prefHeight="26.0" prefWidth="657.0" promptText="Тема" />
+                        <TextArea fx:id="emailBottom" layoutX="14.0" layoutY="534.0" prefHeight="102.0" prefWidth="657.0" promptText="Нижняя часть письма" />
+                        <Text layoutX="14.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;&gt;&gt;  Список сотрудников будет здесь  &lt;&lt;&lt;" />
                      </children>
                   </AnchorPane>
               </content>
