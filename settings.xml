@@ -13,16 +13,23 @@
         <values></values>
     </descriptor>
     <descriptor>
-        <key>emailHeader</key>
-        <values>Отчет о присутствии</values>
+        <key>CCMail</key>
+        <values></values>
     </descriptor>
     <descriptor>
-        <key>emailBody</key>
-        <values>&lt;font color="gray"&gt; &lt;p&gt; Доброе утро, Лариса! &lt;/p&gt;</values>
+        <key>CCMail1</key>
     </descriptor>
     <descriptor>
-        <key>emailBottom</key>
-        <values>&lt;font color="gray"&gt;&lt;p&gt; К работе удаленно приступили.&lt;/p&gt;&lt;/font&gt;&lt;/font&gt;</values>
+        <key>CCMail2</key>
+    </descriptor>
+    <descriptor>
+        <key>BCCMail</key>
+    </descriptor>
+    <descriptor>
+        <key>BCCMail1</key>
+    </descriptor>
+    <descriptor>
+        <key>BCCMail2</key>
     </descriptor>
     <descriptor>
         <key>mail.smtp.host</key>
@@ -39,5 +46,17 @@
     <descriptor>
         <key>mail.smtp.starttls.enable</key>
         <values>true</values>
+    </descriptor>
+    <descriptor>
+        <key>emailHeader</key>
+        <values>Отчет о присутствии</values>
+    </descriptor>
+    <descriptor>
+        <key>emailBody</key>
+        <values>&lt;font color="gray"&gt; &lt;p&gt; Доброе утро, Лариса! &lt;/p&gt;</values>
+    </descriptor>
+    <descriptor>
+        <key>emailBottom</key>
+        <values>&lt;font color="gray"&gt;&lt;p&gt; К работе удаленно приступили.&lt;/p&gt;&lt;/font&gt;&lt;/font&gt;</values>
     </descriptor>
 </settings>

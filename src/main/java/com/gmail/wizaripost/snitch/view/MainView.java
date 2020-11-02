@@ -17,6 +17,7 @@ import lombok.Getter;
 import javax.mail.MessagingException;
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -39,6 +40,12 @@ public class MainView implements Initializable {
     public TextField mailSmtpPort;
     public TextField mailSmtpAuth;
     public AnchorPane settingsPanel1;
+    public TextField CCMail;
+    public TextField CCMail1;
+    public TextField CCMail2;
+    public TextField BCCMail;
+    public TextField BCCMail1;
+    public TextField BCCMail2;
 
     private IMailApi mailApi;
     private IContentCreator contentCreator;
@@ -47,6 +54,9 @@ public class MainView implements Initializable {
     public ISettingsProvider settingsProvider;
     private List<Employee> employeesList;
     private List<Settings> settingsList;
+//    private ArrayList<String> recipient = new ArrayList<>();
+    private ArrayList<String> CCRecipient = new ArrayList<>();
+    private ArrayList<String> BCCRecipient = new ArrayList<>();
     @FXML
     private TextField groupId;
     private String textGroupId = "0";
@@ -70,20 +80,28 @@ public class MainView implements Initializable {
         this.settingsList = this.settingsProvider.getSettings();
         updateEmployees();
         updateFields();
+        updateMailList();
     }
 
     private void updateFields() {
-        this.emailHeader.setText(settingsProvider.getSettings("emailHeader"));
-        this.emailBody.setText(settingsProvider.getSettings("emailBody"));
-        this.emailBottom.setText(settingsProvider.getSettings("emailBottom"));
         this.myMail.setText(settingsProvider.getSettings("myMail"));
         this.passwordMyMail.setText(settingsProvider.getSettings("passwordMyMail"));
         this.targetMail.setText(settingsProvider.getSettings("targetMail"));
+        this.CCMail.setText(settingsProvider.getSettings("CCMail"));
+        this.CCMail1.setText(settingsProvider.getSettings("CCMail1"));
+        this.CCMail2.setText(settingsProvider.getSettings("CCMail2"));
+        this.BCCMail.setText(settingsProvider.getSettings("BCCMail"));
+        this.BCCMail1.setText(settingsProvider.getSettings("BCCMail1"));
+        this.BCCMail2.setText(settingsProvider.getSettings("BCCMail2"));
 
         this.mailSmtpHost.setText(settingsProvider.getSettings("mail.smtp.host"));
         this.mailSmtpPort.setText(settingsProvider.getSettings("mail.smtp.port"));
         this.mailSmtpAuth.setText(settingsProvider.getSettings("mail.smtp.auth"));
         this.mailSmtpStarttlsEnable.setText(settingsProvider.getSettings("mail.smtp.starttls.enable"));
+
+        this.emailHeader.setText(settingsProvider.getSettings("emailHeader"));
+        this.emailBody.setText(settingsProvider.getSettings("emailBody"));
+        this.emailBottom.setText(settingsProvider.getSettings("emailBottom"));
     }
 
     private void updateSettingsList() {
@@ -91,15 +109,22 @@ public class MainView implements Initializable {
         settingsList.add(new Settings("myMail", myMail.getText()));
         settingsList.add(new Settings("passwordMyMail", passwordMyMail.getText()));
         settingsList.add(new Settings("targetMail", targetMail.getText()));
-        settingsList.add(new Settings("emailHeader", emailHeader.getText()));
-        settingsList.add(new Settings("emailBody", emailBody.getText()));
-        settingsList.add(new Settings("emailBottom", emailBottom.getText()));
+        settingsList.add(new Settings("CCMail", CCMail.getText()));
+        settingsList.add(new Settings("CCMail1", CCMail1.getText()));
+        settingsList.add(new Settings("CCMail2", CCMail2.getText()));
+        settingsList.add(new Settings("BCCMail", BCCMail.getText()));
+        settingsList.add(new Settings("BCCMail1", BCCMail1.getText()));
+        settingsList.add(new Settings("BCCMail2", BCCMail2.getText()));
+
         settingsList.add(new Settings("mail.smtp.host", mailSmtpHost.getText()));
         settingsList.add(new Settings("mail.smtp.port", mailSmtpPort.getText()));
         settingsList.add(new Settings("mail.smtp.auth", mailSmtpAuth.getText()));
         settingsList.add(new Settings("mail.smtp.starttls.enable",
                 mailSmtpStarttlsEnable.getText()));
 
+        settingsList.add(new Settings("emailHeader", emailHeader.getText()));
+        settingsList.add(new Settings("emailBody", emailBody.getText()));
+        settingsList.add(new Settings("emailBottom", emailBottom.getText()));
     }
 
 
@@ -120,10 +145,13 @@ public class MainView implements Initializable {
         updateSettingsList();
         settingsProvider.saveSettingsToFile(new File("settings.xml"), settingsList);
         installSettings();
+        updateMailList();
         String content = this.contentCreator.createContent(employeesList);
         try {
             this.mailApi.sendMail(
                     settingsProvider.getSettings("targetMail"),
+                    CCRecipient,
+                    BCCRecipient,
                     settingsProvider.getSettings("emailHeader"),
                     content);
         } catch (MessagingException e) {
@@ -159,8 +187,8 @@ public class MainView implements Initializable {
     }
 
     public void settings(ActionEvent actionEvent) {
-             settingsPanel.setVisible(true);
-             settingsPanel1.setVisible(false);
+        settingsPanel.setVisible(true);
+        settingsPanel1.setVisible(false);
     }
 
     public void mailBodySettings(ActionEvent actionEvent) {
@@ -171,5 +199,46 @@ public class MainView implements Initializable {
     public void closeSettings(ActionEvent actionEvent) {
         settingsPanel.setVisible(false);
         settingsPanel1.setVisible(false);
+    }
+
+    private void updateMailList() {
+        CCRecipient.clear();
+        BCCRecipient.clear();
+//        CCRecipient.add(CCMail.getText());
+//        CCRecipient.add(CCMail1.getText());
+//        CCRecipient.add(CCMail2.getText());
+//        BCCRecipient.add(BCCMail.getText());
+//        BCCRecipient.add(BCCMail1.getText());
+//        BCCRecipient.add(BCCMail2.getText());
+        CCRecipient.add(settingsProvider.getSettings("CCMail"));
+        CCRecipient.add(settingsProvider.getSettings("CCMail1"));
+        CCRecipient.add(settingsProvider.getSettings("CCMail2"));
+        BCCRecipient.add(settingsProvider.getSettings("BCCMail"));
+        BCCRecipient.add(settingsProvider.getSettings("BCCMail1"));
+        BCCRecipient.add(settingsProvider.getSettings("BCCMail2"));
+
+
+//        if (settingsProvider.getSettings("CCMail") != null && !settingsProvider.getSettings("CCMail").isEmpty()) {
+//            CCRecipient.add(settingsProvider.getSettings("CCMail"));
+//        }
+//        if (settingsProvider.getSettings("CCMail1") != null && !settingsProvider.getSettings("CCMail1").isEmpty()) {
+//            CCRecipient.add(settingsProvider.getSettings("CCMail1"));
+//
+//        }
+//        if (settingsProvider.getSettings("CCMail2") != null && !settingsProvider.getSettings("CCMail2").isEmpty()) {
+//            CCRecipient.add(settingsProvider.getSettings("CCMail2"));
+//
+//        }
+//        if (settingsProvider.getSettings("BCCMail") != null && !settingsProvider.getSettings("BCCMail").isEmpty()) {
+//            BCCRecipient.add(settingsProvider.getSettings("BCCMail"));
+//
+//        }
+//        if (settingsProvider.getSettings("BCCMail1") != null && !settingsProvider.getSettings("BCCMail1").isEmpty()) {
+//            BCCRecipient.add(settingsProvider.getSettings("BCCMail1"));
+//
+//        }
+//        if (settingsProvider.getSettings("BCCMail2") != null && !settingsProvider.getSettings("BCCMail2").isEmpty()) {
+//            BCCRecipient.add(settingsProvider.getSettings("BCCMail2"));
+//        }
     }
 }
