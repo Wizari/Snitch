@@ -122,7 +122,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="settingsPanel1" layoutY="53.0" prefHeight="746.0" prefWidth="700.0">
+      <AnchorPane fx:id="settingsPanel1" layoutY="53.0" prefHeight="746.0" prefWidth="700.0" visible="false">
          <children>
             <ScrollPane layoutX="-8.0" layoutY="-23.0" prefHeight="780.0" prefWidth="700.0" style="-fx-background-color: transparent;">
                <content>
