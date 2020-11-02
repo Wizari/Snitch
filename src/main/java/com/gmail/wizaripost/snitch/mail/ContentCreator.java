@@ -9,7 +9,6 @@ import java.util.List;
 
 public class ContentCreator implements IContentCreator {
     private StringBuilder sb = new StringBuilder();
-    private int enumerator = 0;
     private String emailBody;
     private String emailBottom;
 
@@ -23,62 +22,52 @@ public class ContentCreator implements IContentCreator {
         sb.setLength(0);
         sb
                 .append(emailBody)
-                .append("<p>")
-                .append(getDate() + "")
-                .append("</p>")
-                .append("\n")
                 .append("</font>")
-                .append("<font color=\"black\">")
-                .append("<ul>")
-                .append("\n");
-
-        for (Employee employee : employeeList) {
-            getEmployee(employee);
-        }
-        sb
-                .append("</ul>")
-                .append(emailBottom)
+                .append("</font>")
+                .append("</font>")
                 .append("</font>")
                 .append("</font>");
-
-//        getFinale();
-        return sb.toString();
+        String content = sb.toString();
+        content = content.replaceAll("@EmployeesList", getEmployeesList(employeeList));
+        content = content.replaceAll("@GetDate", getDate());
+        return content;
     }
 
-//    private void getFinale() {
-//        String finalMessage = new String();
-//        if (enumerator == 1) {
-//            finalMessage = "К работе удаленно приступил.\n";
-//        } else {
-//            finalMessage = "К работе удаленно приступили.\n";
-//        }
-//        sb
-//                .append("<font color=\"gray\">")
-//                .append("<p>")
-//                .append(finalMessage)
-//                .append("</p>")
-//                .append("</font>")
-//                .append("</font>");
-//        enumerator = 0;
-//    }
-
-    private void getEmployee(Employee employee) {
+    private StringBuilder getEmployee(Employee employee) {
+        StringBuilder builder = new StringBuilder();
         if (employee.getStatus()) {
-            enumerator++;
-            sb
+            builder
                     .append("<li>")
                     .append(employee.getName())
                     .append("\t\t\t")
                     .append("</li>")
                     .append("\n");
         }
+        return builder;
+    }
+
+
+    private String getEmployeesList(List<Employee> employeeList) {
+        StringBuilder builder = new StringBuilder();
+        builder
+                .append("<font color=\"black\">")
+                .append("<ul>")
+                .append("\n");
+
+        for (Employee employee : employeeList) {
+            builder.append(getEmployee(employee));
+        }
+        builder.append("</ul>");
+        return builder.toString();
     }
 
     private String getDate() {
         Date currentDate = new Date();
         SimpleDateFormat dateFormat = null;
         dateFormat = new SimpleDateFormat("dd MMMM YYYY", myDateFormatSymbols);
-        return dateFormat.format(currentDate);
+        String stringDate = new String("<p>" + dateFormat.format(currentDate) + "</p>" + "\n");
+//        return dateFormat.format(currentDate);
+        return stringDate;
     }
 
     private static DateFormatSymbols myDateFormatSymbols = new DateFormatSymbols() {

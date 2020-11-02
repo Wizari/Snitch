@@ -122,7 +122,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="settingsPanel1" layoutY="53.0" prefHeight="746.0" prefWidth="700.0" visible="false">
+      <AnchorPane fx:id="settingsPanel1" layoutY="53.0" prefHeight="746.0" prefWidth="700.0">
          <children>
             <ScrollPane layoutX="-8.0" layoutY="-23.0" prefHeight="780.0" prefWidth="700.0" style="-fx-background-color: transparent;">
                <content>
@@ -138,10 +138,11 @@
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <Text layoutX="46.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;&gt;&gt;  Список сотрудников будет здесь  &lt;&lt;&lt;" />
-                        <TextArea fx:id="emailBody" layoutX="28.0" layoutY="110.0" prefHeight="102.0" prefWidth="657.0" promptText="Верхняя часть письма" />
+                        <TextArea fx:id="emailBody" layoutX="28.0" layoutY="110.0" prefHeight="281.0" prefWidth="657.0" promptText="Верхняя часть письма" />
                         <TextField fx:id="emailHeader" layoutX="28.0" layoutY="72.0" prefHeight="26.0" prefWidth="657.0" promptText="Тема" />
-                        <TextArea fx:id="emailBottom" layoutX="28.0" layoutY="245.0" prefHeight="102.0" prefWidth="657.0" promptText="Нижняя часть письма" />
+                        <TextArea fx:id="emailBottom" layoutX="28.0" layoutY="537.0" prefHeight="102.0" prefWidth="657.0" promptText="Нижняя часть письма" visible="false" />
+                        <Text layoutX="28.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@EmployeesList - список сотрудников" wrappingWidth="272.0" />
+                        <Text layoutX="28.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@GetDate - сегодняшняя дата в формате &quot;DD месяц YYYY&quot;" wrappingWidth="657.43359375" />
                      </children>
                   </AnchorPane>
                </content>
