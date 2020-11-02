@@ -33,6 +33,7 @@
             <Menu mnemonicParsing="false" text="Menu">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#settings" text="Settings" />
+                  <MenuItem mnemonicParsing="false" onAction="#mailBodySettings" text="Mail Body Settings" />
               </items>
             </Menu>
          </menus></MenuBar>
@@ -99,13 +100,35 @@
                               <Font size="20.0" />
                            </font>
                         </Button>
-                        <TextArea fx:id="emailBody" layoutX="14.0" layoutY="379.0" prefHeight="102.0" prefWidth="657.0" promptText="Верхняя часть письма" />
-                        <TextField fx:id="emailHeader" layoutX="14.0" layoutY="348.0" prefHeight="26.0" prefWidth="657.0" promptText="Тема" />
-                        <TextArea fx:id="emailBottom" layoutX="14.0" layoutY="534.0" prefHeight="102.0" prefWidth="657.0" promptText="Нижняя часть письма" />
-                        <Text layoutX="14.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;&gt;&gt;  Список сотрудников будет здесь  &lt;&lt;&lt;" />
                      </children>
                   </AnchorPane>
               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="settingsPanel1" layoutY="53.0" prefHeight="746.0" prefWidth="700.0" visible="false">
+         <children>
+            <ScrollPane layoutX="-8.0" layoutY="-23.0" prefHeight="780.0" prefWidth="700.0" style="-fx-background-color: transparent;">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="758.0" prefWidth="685.0">
+                     <children>
+                        <Button layoutX="213.0" layoutY="15.0" mnemonicParsing="false" onAction="#save" prefHeight="46.0" prefWidth="94.0" text="Save">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="326.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeSettings" prefHeight="46.0" prefWidth="183.0" text="Close Settings">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Text layoutX="46.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;&gt;&gt;  Список сотрудников будет здесь  &lt;&lt;&lt;" />
+                        <TextArea fx:id="emailBody" layoutX="28.0" layoutY="110.0" prefHeight="102.0" prefWidth="657.0" promptText="Верхняя часть письма" />
+                        <TextField fx:id="emailHeader" layoutX="28.0" layoutY="72.0" prefHeight="26.0" prefWidth="657.0" promptText="Тема" />
+                        <TextArea fx:id="emailBottom" layoutX="28.0" layoutY="245.0" prefHeight="102.0" prefWidth="657.0" promptText="Нижняя часть письма" />
+                     </children>
+                  </AnchorPane>
+               </content>
             </ScrollPane>
          </children>
       </AnchorPane>

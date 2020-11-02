@@ -37,7 +37,10 @@ public class ContentCreator implements IContentCreator {
         }
         sb
                 .append("</ul>")
-                .append(emailBottom);
+                .append(emailBottom)
+                .append("</font>")
+                .append("</font>");
+
 //        getFinale();
         return sb.toString();
     }

@@ -38,6 +38,7 @@ public class MainView implements Initializable {
     public TextField mailSmtpHost;
     public TextField mailSmtpPort;
     public TextField mailSmtpAuth;
+    public AnchorPane settingsPanel1;
 
     private IMailApi mailApi;
     private IContentCreator contentCreator;
@@ -158,15 +159,17 @@ public class MainView implements Initializable {
     }
 
     public void settings(ActionEvent actionEvent) {
-        if (settingsPanel.isVisible()) {
-            settingsPanel.setVisible(false);
-        } else {
-            settingsPanel.setVisible(true);
-        }
+             settingsPanel.setVisible(true);
+             settingsPanel1.setVisible(false);
+    }
+
+    public void mailBodySettings(ActionEvent actionEvent) {
+        settingsPanel1.setVisible(true);
+        settingsPanel.setVisible(false);
     }
 
     public void closeSettings(ActionEvent actionEvent) {
         settingsPanel.setVisible(false);
-
+        settingsPanel1.setVisible(false);
     }
 }

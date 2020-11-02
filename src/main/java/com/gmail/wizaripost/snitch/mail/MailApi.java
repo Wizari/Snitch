@@ -31,6 +31,8 @@ public class MailApi implements IMailApi {
         message.setSentDate(new Date());
         message.setSubject(subject);
         message.setContent(content, "text/html; charset=utf-8");
+//        InternetAddress internetAddress = new InternetAddress("");
+//        message.addRecipient(Message.RecipientType.CC, internetAddress);
         Transport.send(message);
     }
 
