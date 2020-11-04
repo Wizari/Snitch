@@ -36,7 +36,7 @@
         <key>BCCMail2</key>
         <values></values>
     </descriptor>
-<descriptor>
+    <descriptor>
         <key>mail.smtp.host</key>
         <values>smtp.gmail.com</values>
     </descriptor>

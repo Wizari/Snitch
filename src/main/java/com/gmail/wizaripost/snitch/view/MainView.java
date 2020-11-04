@@ -12,6 +12,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import lombok.Getter;
 
 import javax.mail.MessagingException;
@@ -54,7 +56,7 @@ public class MainView implements Initializable {
     public ISettingsProvider settingsProvider;
     private List<Employee> employeesList;
     private List<Settings> settingsList;
-//    private ArrayList<String> recipient = new ArrayList<>();
+    //    private ArrayList<String> recipient = new ArrayList<>();
     private ArrayList<String> CCRecipient = new ArrayList<>();
     private ArrayList<String> BCCRecipient = new ArrayList<>();
     @FXML
@@ -154,18 +156,27 @@ public class MainView implements Initializable {
                     BCCRecipient,
                     settingsProvider.getSettings("emailHeader"),
                     content);
+            System.out.println("Сообщение отправлено");
+            OpenModelessWindow openModelessWindow = new OpenModelessWindow();
+            openModelessWindow.handle(
+                    actionEvent, "OK", "Сообщение отправлено", new Font("Arial", 30), 630, 100, Color.GREEN, 3000);
         } catch (MessagingException e) {
+            System.out.println("ERROR!!!!!");
+            OpenModelessWindow openModelessWindow = new OpenModelessWindow();
+            openModelessWindow.handle(
+                    actionEvent, "ERROR!", e.getMessage(), new Font("Arial", 15), 630, 100, Color.RED, 0);
             e.printStackTrace();
-
         }
+
     }
+
 
     public void save(ActionEvent actionEvent) {
         System.out.println("____Save");
-
         updateSettingsList();
         settingsProvider.saveSettingsToFile(new File("settings.xml"), settingsList);
     }
+
 
     private void installSettings() {
         this.settingsProvider = new SettingsProviderFromXml(new File("settings.xml"));
