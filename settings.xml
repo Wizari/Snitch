@@ -36,13 +36,13 @@
         <key>BCCMail2</key>
         <values></values>
     </descriptor>
-    <descriptor>
+<descriptor>
         <key>mail.smtp.host</key>
         <values>smtp.gmail.com</values>
     </descriptor>
     <descriptor>
         <key>mail.smtp.port</key>
-        <values>587</values>
+        <values>465</values>
     </descriptor>
     <descriptor>
         <key>mail.smtp.auth</key>
@@ -65,7 +65,8 @@
     </descriptor>
     <descriptor>
         <key>emailBottom</key>
-        <values>
+        <values>&lt;font color="gray"&gt;
+&lt;p&gt;К работе удаленно приступили.&lt;/p&gt;&lt;/font&gt;&lt;/font&gt;
         </values>
     </descriptor>
 </settings>
